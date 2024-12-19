@@ -11,7 +11,6 @@ class _FormWState extends State<FormW> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,8 +24,7 @@ class _FormWState extends State<FormW> {
               children: [
                 _TextArea(),  //TextField
                 _SliderArea(), //Slider
-
-
+                _RadioArea(), // Radiockat
 
 
               ],
@@ -39,6 +37,60 @@ class _FormWState extends State<FormW> {
     );
   }
 }
+
+
+
+class _RadioArea extends StatefulWidget {
+  const _RadioArea({super.key});
+
+  @override
+  State<_RadioArea> createState() => _RadioAreaState();
+}
+
+class _RadioAreaState extends State<_RadioArea> {
+
+  List<String> cities = ['서울',  '대전', '부산', '인천']; // radio를 구성하는 목록
+  String? _citieValue = null; // 사용자가 선택한 도시이름
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        ...cities.map(
+                (city) {
+
+              bool _isSelectedCity = (city == _citieValue);
+
+
+              return Row(
+                children: [
+                  Radio<String> (
+                    value: city,
+                    groupValue: _citieValue,
+                    activeColor: Colors.greenAccent, // Radio Button 클릭된 것, 색상 변경
+                    onChanged: (value) {
+                      setState(() {
+                        _citieValue = value ?? '서울';
+                      });
+                    },
+                  ),
+                  Text(city,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color:  _isSelectedCity ? Colors.red : Colors.black26,
+                        fontWeight: _isSelectedCity ? FontWeight.bold : FontWeight.normal
+                    ),)
+
+                ],
+              );
+            }
+        )
+      ],
+    );
+  }
+}
+
+
 
 class _SliderArea extends StatefulWidget {
   const _SliderArea({super.key});
