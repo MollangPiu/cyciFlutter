@@ -44,6 +44,11 @@ class _FormWState extends State<FormW2> {
 
 
       print('_userName: ${_userName}');
+    } else {
+      setState(() {
+
+        errorrMsg = '실패!';
+      });
     }
   }
 
