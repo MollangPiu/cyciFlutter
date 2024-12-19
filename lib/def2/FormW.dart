@@ -23,7 +23,11 @@ class _FormWState extends State<FormW> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _TextArea()
+                _TextArea(),  //TextField
+                _SliderArea(), //Slider
+
+
+
 
               ],
 
@@ -35,6 +39,34 @@ class _FormWState extends State<FormW> {
     );
   }
 }
+
+class _SliderArea extends StatefulWidget {
+  const _SliderArea({super.key});
+
+  @override
+  State<_SliderArea> createState() => _SliderAreaState();
+}
+
+class _SliderAreaState extends State<_SliderArea> {
+
+  double _phoneNumber = 1000000000.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Slider(value: _phoneNumber, onChanged: (value) {
+      setState(() {
+        _phoneNumber = value;
+
+      });
+    },
+      min: 1000000000,// 최소값
+      max: 1099999999,// 최대값
+      divisions: 99999999,
+      label: _phoneNumber.toStringAsFixed(0),
+    );
+  }
+}
+
 
 class _TextArea extends StatefulWidget {
   const _TextArea({super.key});
