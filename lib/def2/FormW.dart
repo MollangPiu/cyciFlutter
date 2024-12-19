@@ -10,7 +10,6 @@ class FormW extends StatefulWidget {
 class _FormWState extends State<FormW> {
 
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,6 +24,7 @@ class _FormWState extends State<FormW> {
                 _TextArea(),  //TextField
                 _SliderArea(), //Slider
                 _RadioArea(), // Radiockat
+                // CheckBox
 
 
               ],
@@ -37,6 +37,64 @@ class _FormWState extends State<FormW> {
     );
   }
 }
+
+
+class _CheckBox extends StatefulWidget {
+  const _CheckBox({super.key});
+
+  @override
+  State<_CheckBox> createState() => _CheckBoxState();
+}
+
+class _CheckBoxState extends State<_CheckBox> {
+
+
+  List<String> _hobbys = ['코딩', '독서', '운동', '수영',  '제작'];
+  Map<String, bool> _selectedHobbys = {}; // Map 기본 표시
+
+
+  @override
+  void initState() {
+    print('init');
+    super.initState();
+
+    for(var h in _hobbys) {
+      _selectedHobbys[h] = false;
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: _hobbys.map(
+              (hobby) {
+
+            bool _isSelected = _selectedHobbys[hobby] ?? false;
+
+            return Row(
+              children: [
+                Checkbox(value: _isSelected,
+                    activeColor: Colors.tealAccent,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedHobbys[hobby] = value ?? false;
+                      });
+                    }),
+                Text(hobby,
+                  style: TextStyle(
+                      fontSize: 20,
+                      color:  _isSelected ? Colors.red : Colors.black26,
+                      fontWeight: _isSelected ? FontWeight.bold : FontWeight.normal
+                  ),)
+              ],
+            );
+          }
+      ).toList(),
+    );
+  }
+}
+
 
 
 
