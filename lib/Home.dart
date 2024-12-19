@@ -34,6 +34,11 @@ class Home extends StatelessWidget {
             ElevatedButton(onPressed: () {
               Navigator.pushNamed(context, '/parentChild');
             }, child: Text('값 건네받기')),
+            SizedBox(height: 10,),
+            ElevatedButton(onPressed: () {
+              Navigator.pushNamed(context, '/formW');
+            }, child: Text('FormW 사용하기')),
+
 
 
 

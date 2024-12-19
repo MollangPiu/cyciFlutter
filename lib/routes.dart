@@ -9,6 +9,7 @@ import 'def/Con2.dart';
 
 import 'def2/Counter.dart';
 import 'def2/ParentChild.dart';
+import 'def2/FormW.dart';
 
 
 //Java Map ( HashMap Key, Value )
@@ -22,6 +23,7 @@ final Map<String, WidgetBuilder> routes = {
 
   '/counter': (context) => Counter(),
   '/parentChild': (context) => ParentChild(),
+  '/formW': (context) => FormW(),
 
 
 
